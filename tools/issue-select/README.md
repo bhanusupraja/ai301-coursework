@@ -1,10 +1,10 @@
 Unit 1 uploads your installed `issue-select` folder here (the current files from `~/.claude/skills/issue-select/`).
-# eval run written by run_eval.py at 2026-09-29T01:57:03Z
-# model: sonnet (pinned)
-# graded: ..\skill
-# packages: 20 scored
-#   rubric.md  sha256:b1b59546c62e6a3b
-#   SKILL.md  sha256:d569ee8c9229729e
+## eval run written by run_eval.py at 2026-09-29T01:57:03Z
+## model: sonnet (pinned)
+## graded: ..\skill
+## packages: 20 scored
+##   rubric.md  sha256:b1b59546c62e6a3b
+##   SKILL.md  sha256:d569ee8c9229729e
 #
 grading 20 bundle(s) with rubric.md, model sonnet, 5 worker(s)...
   issue-04: accept

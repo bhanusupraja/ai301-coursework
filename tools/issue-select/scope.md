@@ -14,7 +14,7 @@ Two parts. Staff wrote the first; you write the second.
 
 Only issues in the course's Path Review repository are candidates:
 
-- Repo: `codepath/pathreview-ai301-fa26-s1` <!-- paste your section's repo from the Unit 1 Check-In page -->
+- Repo: `codepath/pathreview-ai301-fa26-s1`
 
 Do not search, fetch, or grade issues from any other repository, however
 promising. The wider GitHub comes later in the course; for now the field
@@ -36,4 +36,11 @@ you want to avoid. The skill uses this only to RANK the issues your
 rubric accepts, never to change a verdict: fit cannot rescue an issue
 your rubric rejects, and cannot sink one it accepts. -->
 
-(Write a few sentences here.)
+I'm comfortable across both Python and JS/TypeScript and generally
+programming-language-agnostic; I don't have a strong specialty yet. For
+this first contribution I'd rather build confidence with the workflow
+itself (finding an issue, understanding a codebase, opening a clean PR)
+than take on a big feature, so I prefer small, well-scoped bugs or
+documentation fixes over large or ambiguous work. I want to avoid issues
+that require deep familiarity with a project's internal architecture to
+even get started.

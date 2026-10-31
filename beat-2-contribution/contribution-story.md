@@ -1,4 +1,4 @@
-# Contribution: [Issue Title]
+# Contribution: bug(model-sources): multi-agent capability does not preserve client collaboration tools
 
 Path: `beat-2-contribution/contribution-story.md`
 
@@ -7,18 +7,17 @@ the repository is not read. **Keep every section header below under its exact na
 format criteria grade exactly that. Your course repo link is the whole submission: no tool
 files and no evidence uploads are part of Assignment 5.
 
-**Contribution Number:** [1]
-**Student:** [Student name]
-**GitHub Username:** [your GitHub username, exactly as it appears on your profile - no @, no
-profile URL. Your comments upstream are identified by this name.]
-**Issue:** [GitHub issue link]
+**Contribution Number:** 1
+**Student:** Supraja
+**GitHub Username:** bhanusupraja
+**Issue:** https://github.com/Soju06/codex-lb/issues/2499
 **Pull Request:** [GitHub PR link, once opened]
 
 One repository, built across units 5 to 8, telling the whole story of your real
 contribution. Fill it as you work, not at the end — the sections below ask for evidence that
 is far easier to write down as it happens than to reconstruct in the last weekend.
 
-Contribution Number stays `[1]` unless you make more than one contribution this term; it
+Contribution Number stays `1` unless you make more than one contribution this term; it
 just numbers them.
 
 ---
@@ -55,10 +54,9 @@ happened; these entries are the toolkit's own timeline.
 All four entries are graded. Keep every heading below, and fill each
 one in the week it belongs to.
 
-**Unit 5: [one line on the tool work]**
+**Unit 5: Built issue-scout with a profile-traced search strategy and rubric, then patched both after a wild scan failed its own top 5**
 
-[2-4 sentences: what you built (the scout, your strategy), what broke
-or fell short, what changed because of it.]
+I built issue-scout with three Python queries traced to my fit profile, ranking by fewest comments then most recent update, and grading the top 5. The scan returned 283 unique issues and 212 survived ranking, but all top 5 came from one brand-new university team repo, with role-numbered tasks, and the frontend filter missed a role:frontend label, so I would not take any of them. I changed the strategy to at most one result per repo and substring label matching for frontend, UI, and javascript, added rubric checks for repo established (30 days) and not reserved for the author's own team, and recorded the change in scan-notes.md on 2026-10-30.
 
 **Unit 6: [one line on the tool work]**
 
@@ -80,24 +78,19 @@ drafted, what you did with the draft.]
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs in your own words: how you searched, what your scan
-surfaced, what your scout's verdict said, why this issue fits your
-profile, and what you hope to learn. If your scout's verdict on it
-was reject and you chose it anyway, say so here and say why; choosing
-against your own tool silently is what loses points. Close with an
-honest read of the tool itself: where the scout fell short on a real
-wild search and what you changed or would change, or what convinced
-you it held up. **Record the link to your claim comment in this section too.**
-Not claimed yet? Write `claim pending` and today's date where the link goes,
-and add the link the moment your claim lands.]
+I searched the AI301 Issue Selection site with Language Python and tags help wanted, good first issue, enhancement, and documentation, then broadened the search beyond good first issue alone to help wanted and enhancement work, because the first scan's top results did not survive a real-world check. My original scout scan surfaced a top 5 that all came from one university team project and that I would not take, and a later broad search, verified issue by issue on GitHub, surfaced codex-lb #2499: a Python backend bug in a model gateway used by coding agents, where multi-agent capability metadata does not preserve client collaboration tools. Manual rubric grading on 2026-10-30, after the scout grade command could not run in Claude Code because the course credit balance was too low, gave this issue an ACCEPT verdict with a difficulty note of moderate: it is open, unassigned, with no live pull requests, it passes the AI-policy check with no outright ban found, and the maintainer confirmed the bug on 28 September 2026 and welcomed a focused pull request, with the remaining work limited to the namespace half after #2525 already merged base_instructions.
+
+This issue fits my profile as an AI engineer working in Python, FastAPI, and agentic workflows, with RAG, document processing, and multi-agent systems, because it is backend logic and API tool filtering in an agentic gateway, in the catalog and proxy modules, not complex frontend UI and not a non-Python ecosystem. I hope to learn how multi-agent capability metadata is projected through a gateway, how collaboration namespaces are preserved or lost, and how an OpenSpec change is used to document a contract change. My scout fell short on a real wild search in several ways I have now patched: one repo filled the whole top 5, a substring label was missed, a brand-new repo passed as active, and an umbrella onboarding issue looked claimable when its real work was in contested or assigned child tasks. What convinced me the patched approach held up was verifying each candidate on GitHub itself — assignee, live pull requests, claim comments, maintainer replies, and AI policy — before claiming, rather than trusting the list page alone.
+
+Claim comment link: https://github.com/Soju06/codex-lb/issues/2499#issuecomment-6528381254
 
 **Toolkit**
 
 - Tool: issue-scout (your scout: your search strategy, your rubric),
   and how you used it
-- What it produced: [the scan and its verdict on this issue, described]
-- Difficulties: [where it fell short, or "none met" if none did]
-- What changed: [what you patched or would update, or "nothing"]
+- What it produced: The original scan (283 unique, 212 survived ranking, top 5 all from one university repo, none taken), followed by a broad Issue Selection search and GitHub verification that produced codex-lb #2499, manually graded ACCEPT, moderate, on 2026-10-30.
+- Difficulties: The scout's top 5 failed on real-world checks (one repo, role-numbered team tasks, missed frontend substring, brand-new repo passing as active), an umbrella issue looked claimable, and the scout grade command could not run on 2026-10-30 because the Claude Code course credit balance was too low, so grading was done manually from verified checks.
+- What changed: Strategy changed to at most one result per repo and substring label matching; rubric gained Repo established (30 days) and Not reserved for the author's own team; a scope-feasible patch is to be applied in Unit 6, and a true scout grade will supersede the manual grade only if course credit returns.
 
 ---
 

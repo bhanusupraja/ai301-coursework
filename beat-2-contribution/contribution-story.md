@@ -70,10 +70,11 @@ I cloned ai301-unit7-starter and installed the ship-gate, which copies its hook 
 
 What broke or fell short: the first gate run failed because `~` does not expand in my terminal, so I used the full Windows path; and the first re-run used the old pr_draft.md because I had not seen the new file. What changed because of it: I stop a running check before re-running it with a fixed file, and I copy the file itself over instead of re-typing it.
 
-**Unit 8: [one line on the tool work]**
+**Unit 8: Installed the PR monitor, wrote a playbook from five merged PRs, and ran it on #2724 — it said wait**
 
-[2-4 sentences: the PR-monitor and your playbook. What it read, what it
-drafted, what you did with the draft.]
+I cloned ai301-unit8-starter and installed the PR monitor into `~/.claude/pr-monitor/` (monitor.py, move-forms.md, playbook-template.md, INSTALL.md). I wrote playbook.md with four sections: response rules, staleness thresholds, nudge etiquette, and walk-away criteria. For the thresholds I looked at five recent merged PRs from outside contributors — they waited 12 to 17 days from open to merge, all merged on 2026-10-16 in one batch, and none had a maintainer review comment, so I set my nudge threshold to 21 quiet days. I ran the monitor on #2724 on 2026-11-11: it found the PR, all 3 checks passing, no review yet, quiet for 1 day, and drafted a wait note — no nudge, because the 21-day threshold is not met. Nothing was posted; the draft stays on my computer.
+
+What broke or fell short: the first `--state` run said NO PR YET because gh looked in my fork (bhanusupraja/codex-lb) instead of the original repo; I fixed it with `gh repo set-default Soju06/codex-lb`. What changed because of it: I check which repo a tool is pointing at before I trust a "not found" answer.
 
 ---
 

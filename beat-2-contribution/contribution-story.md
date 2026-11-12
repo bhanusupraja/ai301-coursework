@@ -185,8 +185,14 @@ re-added after line 213, verified top-level by `grep`.
    FAIL before the fix. Actual, 2026-11-10 ~09:16 EST:
    `FF......`, 2 failed (v1, v2 —
    `AssertionError: assert 'namespace' in frozenset()`), 6 passed, 36
-   deselected, 1 warning in 2.19s. The integration check in step 2 was
-   run only AFTER the fix (4 passed, below), not before it.
+   deselected, 1 warning in 2.19s. The integration check in step 2
+   was first run only AFTER the fix (4 passed, below), but I ran it
+   before the fix too on 2026-11-11 ~19:51 EST (for the repro-check
+   grade): with `catalog.py` temporarily reverted, it gave `FFFF`,
+   4 failed, 101 deselected, 1 warning in 11.42s — all four paths
+   fail with `KeyError: 'tools'` because the namespace was dropped
+   and `web_search` was filtered, so no tools were forwarded. The
+   fix was restored right after, verified by `git status` (clean).
 4. After the fix, 2026-11-10 ~09:24 EST, the same command gave
    `8 passed, 36 deselected, 1 warning in 0.53s`.
 
@@ -290,10 +296,10 @@ any other hosted or custom tool filtering.
 - What it produced: a fix small enough to state in three lines, with
   its tests and OpenSpec delta taken from the same reference commit
   instead of designed from scratch.
-- Difficulties: whether the 3 lines apply cleanly to current upstream
-  main is still unverified — it must be checked locally in the clone.
-  The reference commit was based on an older upstream, so the exact
-  surrounding lines may differ.
+- Difficulties: the 3 lines came from a reference commit based on an
+  older upstream, so I had to check they applied cleanly to current
+  main — they did, verified by `git diff` on 2026-11-09, with the
+  insertion point after line 241.
 - What changed: the plan changed from "design the fix" to "port the
   focused hunk, port its tests, write a fresh delta" after the
   reference implementation was found in the issue body on 5 Nov 2026.
@@ -472,6 +478,10 @@ Soju06 has not commented on the PR as of ~13:10 EST (only CodeRabbit
 has). The short CodeRabbit-fix comment was posted on the PR ~13:54 EST
 and verified on the PR page.
 
+**2026-11-11**
+
+Ran the ship-gate on the branch: all 4 manifest checks passed, but pr-precheck stopped it because pr_draft.md used custom headings instead of the repo's PR template; I rebuilt pr_draft.md to the template format and re-ran the gate — ship-gate: PASS, pr-precheck 6/6. Wrote plan.md, plan-comment.md, and test_evidence.md; plan-check graded the plan package ACCEPT after I fixed the comment to flag the ADDED-vs-MODIFIED deviation. Ran the before-fix integration check for the repro-check grade (4 failed, `KeyError: 'tools'`, 11.42s) and restored the fix. The repro-check grade was REJECT on the claim check only (the posted claim's 4 Nov date and fix promise); I posted a slip-report comment on #2499 about the late PR and verified it. Installed the PR monitor, wrote a playbook from five merged PRs (12–17 days to merge, 21-day nudge threshold), and ran it on #2724 — wait note, no nudge. Committed the story twice (15e6383 Unit 7 Toolkit, dc789f6 Unit 8 Toolkit) and pushed.
+
 **Toolkit**
 
 - Tool: git, pytest, ruff, ty, and the OpenSpec CLI, run in the
@@ -553,8 +563,15 @@ entries). Do not add that sentence back without my say-so.
   (only CodeRabbit has), and #2499 still has exactly 2 comments as of
   ~11:00 EST — ack PENDING. CI checks were still running at ~11:07
   EST (GitGuardian and CodeRabbit in progress, label check passed, no
-  test-suite result reported yet). Add another dated pair of lines for
-  each review round.
+  test-suite result reported yet).
+- 2026-11-11 ~20:11 EST: Soju06 still has not commented on PR #2724
+  (still 2 comments: CodeRabbit's summary and my reply). All 3 CI
+  checks now pass (GitGuardian, CodeRabbit, label). I posted a
+  slip-report comment on #2499 (~19:55 EST, verified by API — #2499
+  now has 3 comments) saying the PR opened 10 Nov, later than the
+  4 Nov aim. I ran the PR monitor on #2724 (~20:23 EST): quiet for
+  1 day, wait note, no nudge (21-day threshold not met). Ack still
+  PENDING.
 
 **Status:** Awaiting review.
 

@@ -64,10 +64,11 @@ I installed the voice guard on my own computer in `~/.claude/voice-guard/` (chec
 
 What broke or fell short: the settings.json merge moved too fast and I asked to slow down to one small step at a time in plain words, in cmd; and the hook check only looks for the words "check_voice", so a check that prints "voice guard hook found" does not by itself prove every detail of the hook file is right. What changed because of it: every step after that was done one command at a time, checking what I actually saw before the next step, and the hook file was compared word for word before saving. The guard-log was appended, not replaced, so the guard's own 14:21 stop line stays as evidence.
 
-**Unit 7: [one line on the tool work]**
+**Unit 7: Installed the ship-gate and ran it on the branch until it passed, and wrote the plan and test evidence for the gate**
 
-[2-4 sentences: the ship-gate and your gate manifest. What it produced
-on your real branch, what fought you, what changed because of it.]
+I cloned ai301-unit7-starter and installed the ship-gate, which copies its hook into settings.json and runs my manifest checks plus pr-precheck before `gh pr create`. I filled ship-manifest.md with the 4 checks I had actually run (focused pytest, ruff, ty, openspec validate) and proved the hook works when it stopped `gh pr create --help` — the stop is the pass. I wrote plan.md from the Solution Approach, test_evidence.md from my real runs, and pr_draft.md from the PR body. The first gate run passed all 4 manifest checks but pr-precheck stopped it because the draft used custom headings instead of the repo's PR template; I rebuilt pr_draft.md to the template format, copied the file over, and re-ran the gate on 2026-11-11 — ship-gate: PASS, with pr-precheck passing all 6 checks. The PR was already open as #2724, so the gate was a verification step, not a new PR.
+
+What broke or fell short: the first gate run failed because `~` does not expand in my terminal, so I used the full Windows path; and the first re-run used the old pr_draft.md because I had not seen the new file. What changed because of it: I stop a running check before re-running it with a fixed file, and I copy the file itself over instead of re-typing it.
 
 **Unit 8: [one line on the tool work]**
 
@@ -558,10 +559,23 @@ entries). Do not add that sentence back without my say-so.
 
 **Toolkit**
 
-- Tool: [PENDING — the ship-gate has not been installed or run yet.
-  Fill this after Unit 7 steps 2–4 and the gate run on the branch:
-  what the gate said about the branch, what stopped or confused you,
-  and what you changed because of it.]
+- Tool: ship-gate (Unit 7 starter) with a ship-manifest.md listing
+  4 checks — focused pytest, ruff check + format, ty, openspec
+  validate — and pr-precheck in live mode.
+- What it produced: the gate run on branch
+  fix/preserve-multi-agent-namespace on 2026-11-11 gave ship-gate:
+  PASS. Focused tests ok (765s), Lint and format ok (3s), Typecheck
+  ok (3s), OpenSpec ok (4s), and pr-precheck passed all 6 checks
+  (diff-matches-plan, description-matches-diff, evidence-decisive,
+  repo-checks-run, diff-clean, standards-met).
+- Difficulties: the first gate run stopped at pr-precheck because
+  pr_draft.md used custom headings instead of the repo's PR template;
+  I rebuilt pr_draft.md to the template format and re-ran the gate.
+  The first re-run used the old file because I had not seen the new
+  one, so I stopped it, copied the new file over, and re-ran it.
+- What changed: the PR description must follow the repo's template
+  sections exactly, and a file must be copied over, not re-typed,
+  before a check is re-run on it.
 
 ---
 
